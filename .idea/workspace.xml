@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7f4a191e-b496-43d1-bd93-23603865430e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.eslintignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Authentication/Authentication.hook.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Authentication/Authentication.store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Authentication/Authentication.strings.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Authentication/Authentication.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Authentication/ProtectedRoute.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Authentication/api/api.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Authentication/authentication.types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Authentication/components.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Authentication/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GTD/Main.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GTD/components.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Header/Header.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Header/components.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/api.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/baseQuery.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app.hook.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common-components/Spinner/Spinner.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common-components/button/button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common-components/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common-components/labelled-input/components.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common-components/labelled-input/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common-components/labelled-input/labelled-input.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common-components/tab/tab.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/gtd.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/style/theme.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="ProjectId" id="2LUDv2iCHQEcVwh8ivUK01ryYoz" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/miklos/development/Apps/GTD/docker-compose.yml&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/miklos/development/Apps/GTD/gtd-fe-v2/node_modules/prettier&quot;,
+    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/miklos/development/Apps/GTD/gtd-fe-v2/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.rcb.reactComponents" value="false" />
+        <entry key="com.haulmont.rcb.reactInspector" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Authentication" />
+      <recent name="$PROJECT_DIR$/src/commonComponents" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/api" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7f4a191e-b496-43d1-bd93-23603865430e" name="Changes" comment="" />
+      <created>1675916994794</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1675916994794</updated>
+      <workItem from="1675916995870" duration="1994000" />
+      <workItem from="1675919057620" duration="13849000" />
+      <workItem from="1676016797543" duration="599000" />
+      <workItem from="1676120492498" duration="2012000" />
+      <workItem from="1676261448839" duration="7438000" />
+      <workItem from="1676610393255" duration="11685000" />
+      <workItem from="1676743297355" duration="6850000" />
+      <workItem from="1676963827311" duration="2528000" />
+      <workItem from="1677007058452" duration="5024000" />
+      <workItem from="1677347620353" duration="1643000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
