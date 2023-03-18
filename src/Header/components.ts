@@ -25,3 +25,14 @@ export const Picture = styled.picture`
 export const RightItemsContainer = styled.div`
   display: flex;
 `;
+
+export const RightMenuContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+`;
+
+export const ButtonsContainer = styled.div`
+  display: grid;
+  gap: 8px;
+`;

@@ -1,10 +1,15 @@
 import { render } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
-import { theme } from "../style/theme";
+import { theme } from "../style";
+import { Provider } from "react-redux";
+import { store } from "../store";
+import { ReactNode } from "react";
 
-const AllTheProviders = ({ children }) =>
+const AllTheProviders = ({ children }: { children: ReactNode | ReactNode[] }) =>
   <ThemeProvider theme={theme}>
-    {children}
+    <Provider store={store()}>
+      {children}
+    </Provider>
   </ThemeProvider>;
 
 

@@ -1,0 +1,107 @@
+import { Modal, ModalTypes } from "../../../common/Modal";
+
+import { ButtonsContainer, InputContainer, Label, TextArea, Title } from "./componenets";
+import { Button, ButtonTypes } from "../../../common/button/button";
+import { commonStrings } from "../../../common/common-strings";
+import { GTDStrings } from "../../GTD.strings";
+import { LabelledInput } from "../../../common";
+import { useState } from "react";
+import { useGetTags, useUpdateNextAction } from "../../GTD.api";
+import { CreatableTagSelector } from "../../../common/tag-selector";
+import { Option, Tag } from "../../GTD.types";
+
+export const EditNextActionModal = ({
+                                      originalNextActionTitle,
+                                      originalTags,
+                                      originalDeadline,
+                                      originalDescription,
+                                      closeModal
+                                    }: EditNextActionModalProps) => {
+  const { data: tags, isFetching: areTagsFetching, isUninitialized } = useGetTags({});
+  const [updateNextAction, { isLoading: isCreatingNextAction }] = useUpdateNextAction({});
+
+  const [nextActionName, setNextActionName] = useState<string>(originalNextActionTitle);
+  const [nextActionDeadlineTimestamp, setNextActionDeadlineTimestamp] = useState<number | undefined>(originalDeadline);
+
+  const [selectedTags, setSelectedTags] = useState<Tag[]>(originalTags ? originalTags.map(tagId => tags.find(tag => tag.id === tagId)) : []);
+  const [description, setDescription] = useState<string>(originalDescription);
+  const addNewTag = (newTag: Tag) => {
+    setSelectedTags([...selectedTags, newTag]);
+  };
+
+
+  const selectTagHandler = (selectedTagValues: Option[]) => {
+    setSelectedTags(selectedTagValues.map(selectedTag => ({ id: selectedTag.value, name: selectedTag.label } as Tag)));
+  };
+  const selectedTagOptions = selectedTags.map(tag => ({ label: tag.name, value: tag.id }));
+
+  const updateNextActionHandler = async () => {
+    const newNextAction = {
+      name: nextActionName,
+      deadline: nextActionDeadlineTimestamp!,
+      tags: selectedTags.map(tag => tag.id),
+      description
+    };
+    await updateNextAction(newNextAction);
+    closeModal();
+  };
+
+  return (
+    <Modal closeHandler={closeModal} modalType={ModalTypes.LARGE}>
+      <Title>Modal</Title>
+      <InputContainer>
+        <LabelledInput
+          id={GTDStrings.NEXT_ACTION_NAME}
+          label={GTDStrings.NEXT_ACTION_NAME}
+          value={nextActionName}
+          onChange={(e) => {
+            setNextActionName(e.target.value);
+          }}
+        />
+      </InputContainer>
+      <InputContainer>
+        <Label>
+          {GTDStrings.SELECT_TAGS}
+        </Label>
+        <CreatableTagSelector
+          selectedTags={selectedTagOptions}
+          selectTagHandler={selectTagHandler}
+          setSelectedTags={addNewTag}
+          id="tag-selector"
+          options={tags || []}
+        />
+      </InputContainer>
+      <InputContainer>
+        <label>Deadline</label>
+        <input
+          type="date"
+          value={nextActionDeadlineTimestamp ? (new Date(nextActionDeadlineTimestamp)).toISOString().slice(0, 10) : ""}
+          onChange={(e) => setNextActionDeadlineTimestamp(e.target.valueAsNumber)} />
+      </InputContainer>
+      <InputContainer>
+        <Label>
+          {GTDStrings.NEXT_ACTION_DESCRIPTION}
+          <TextArea rows="6" value={description} onChange={(e) => setDescription(e.target.value)} />
+        </Label>
+      </InputContainer>
+      <ButtonsContainer>
+        <Button label={commonStrings.CANCEL} onClick={closeModal} type={ButtonTypes.CANCEL} />
+        <Button
+          label={GTDStrings.UPDATE_NEXT_ACTION}
+          onClick={updateNextActionHandler}
+          type={ButtonTypes.PRIMARY}
+          disabled={nextActionName.length === 0}
+        />
+      </ButtonsContainer>
+    </Modal>
+  );
+};
+
+type EditNextActionModalProps = {
+  originalNextActionTitle: string;
+  originalTags: number[];
+  originalDeadline: number;
+  originalDescription: string;
+
+  closeModal: () => void;
+}
