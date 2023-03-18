@@ -1,19 +1,16 @@
-import { lazy, useState } from 'react';
-import { Main } from './components';
-import { useAutoLogin } from '../Authentication/Authentication.hook';
+import { Main } from "./components";
+import { Topics } from "./Topics";
+import { Route, Routes } from "react-router-dom";
 
-const Tab = lazy(() => import('../common-components/tab/tab'));
 export const MainPage = () => {
-	const [tags, setTags] = useState<[]>([]);
-	useAutoLogin();
-	console.log('Here');
 
-	return (
-		<Main>
-			<Tab label={'All'} clickHandler={() => console.log('All')} />
-			mains
-		</Main>
-	);
+  return (
+    <Main>
+      <Routes>
+        <Route path="/topic" element={<Topics />} />
+      </Routes>
+    </Main>
+  );
 };
 
 export default MainPage;
