@@ -9,3 +9,7 @@ export const FilterItemContainer = styled.div`
 
 `;
 
+export const SingleFilterContainer = styled.div`
+  width: 90%;
+  margin: 1rem auto;
+`;
