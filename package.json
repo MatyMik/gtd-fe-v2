@@ -5,7 +5,9 @@
   "dependencies": {
     "@fullcalendar/core": "^6.1.4",
     "@fullcalendar/daygrid": "^6.1.4",
+    "@fullcalendar/list": "^6.1.4",
     "@fullcalendar/react": "^6.1.4",
+    "@fullcalendar/timegrid": "^6.1.4",
     "@reduxjs/toolkit": "^1.9.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
