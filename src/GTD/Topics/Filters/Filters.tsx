@@ -1,4 +1,4 @@
-import { FilterContainer, FilterItemContainer } from "./components";
+import { FilterContainer, FilterItemContainer, SingleFilterContainer } from "./components";
 import Select from "react-select";
 import { useGetTags } from "../../GTD.api";
 import { useAppDispatch } from "../../../app.hook";
@@ -22,27 +22,32 @@ export const Filters = () => {
     </FilterItemContainer>
     <FilterItemContainer>
       <h1>ProjectFilters</h1>
-      <label>
-        <input type="radio" value="active" name="active" onChange={() => activeSelectionHandler(ActiveTypes.ACTIVE)} />
-        Active
-      </label>
-      <label>
-        <input type="radio" value="not active" name="active"
-               onChange={() => activeSelectionHandler(ActiveTypes.INACTIVE)} />
-        Not Active
-      </label>
-      <label>
-        <input type="radio" value="both" name="active" onChange={() => activeSelectionHandler(ActiveTypes.BOTH)} />
-        both
-      </label>
-      <label>
-        Tags
-        <Select
-          isMulti
-          options={tags?.map(tag => ({ value: tag.id, label: tag.name })) || []}
-          onChange={tagSelectionHandler}
-        />
-      </label>
+      <SingleFilterContainer>
+        <label>
+          <input type="radio" value="active" name="active"
+                 onChange={() => activeSelectionHandler(ActiveTypes.ACTIVE)} />
+          Active
+        </label>
+        <label>
+          <input type="radio" value="not active" name="active"
+                 onChange={() => activeSelectionHandler(ActiveTypes.INACTIVE)} />
+          Not Active
+        </label>
+        <label>
+          <input type="radio" value="both" name="active" onChange={() => activeSelectionHandler(ActiveTypes.BOTH)} />
+          both
+        </label>
+      </SingleFilterContainer>
+      <SingleFilterContainer>
+        <label>
+          Tags
+          <Select
+            isMulti
+            options={tags?.map(tag => ({ value: tag.id, label: tag.name })) || []}
+            onChange={tagSelectionHandler}
+          />
+        </label>
+      </SingleFilterContainer>
     </FilterItemContainer>
     <FilterItemContainer>
       <h1>Next Action Filters</h1>

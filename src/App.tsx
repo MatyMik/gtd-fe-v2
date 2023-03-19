@@ -20,8 +20,10 @@ function App() {
     <ThemeProvider theme={theme}>
       {((!isLoading && !isUninitialized) || accessToken) ?
         <>
-          <Header />
-          <Menu />
+          {accessToken ? <>
+            <Header />
+            <Menu />
+          </> : null}
           <Routes>
             <Route path="/*" element={<ProtectedRoute><MainPage /></ProtectedRoute>} />
             <Route path="/auth/*" element={<Authentication />} />
