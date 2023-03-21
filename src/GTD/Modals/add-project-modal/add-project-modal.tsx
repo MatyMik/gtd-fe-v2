@@ -1,13 +1,13 @@
 import { Modal } from "../../../common/Modal";
-import { useAppDispatch } from "../../../app.hook";
-import { setIsProjectModalOpen } from "../../GTD.store";
+import { useAppDispatch, useAppSelector } from "../../../app.hook";
+import { selectSelectedTopicId, setIsProjectModalOpen } from "../../GTD.store";
 import Select from "react-select";
 import { ButtonsContainer, InputContainer, Label, Title } from "./componenets";
 import { Button, ButtonTypes } from "../../../common/button/button";
 import { commonStrings } from "../../../common/common-strings";
 import { GTDStrings } from "../../GTD.strings";
 import { LabelledInput } from "../../../common";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCreateProject, useGetTags, useGetTopics } from "../../GTD.api";
 import { CreatableTagSelector } from "../../../common/tag-selector";
 import { Option, Tag } from "../../GTD.types";
@@ -15,7 +15,10 @@ import { Option, Tag } from "../../GTD.types";
 export const AddProjectModal = () => {
   const { data: tags, isFetching: areTagsFetching, isUninitialized } = useGetTags({});
   const [createProject, { isLoading: isCreatingProject }] = useCreateProject({});
+  const { data: topics, isFetching } = useGetTopics({});
+
   const dispatch = useAppDispatch();
+  const selectedTopicId = useAppSelector(selectSelectedTopicId);
   const closeModal = () => {
     dispatch(setIsProjectModalOpen(false));
   };
@@ -23,9 +26,18 @@ export const AddProjectModal = () => {
   const [projectName, setProjectName] = useState<string>("");
   const [projectDeadlineTimestamp, setProjectDeadlineTimestamp] = useState<number | null>(null);
 
-  const { data: topics, isFetching } = useGetTopics({});
+
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
   const [selectedTopic, setSelectedTopic] = useState<Option | null>(null);
+
+  useEffect(() => {
+    if (selectedTopicId && topics && !selectedTopic) {
+      const selectedTopicOption = topics.find(topic => topic.id === selectedTopicId);
+      if (selectedTopicOption) {
+        setSelectedTopic({ label: selectedTopicOption.name, value: selectedTopicOption.id });
+      }
+    }
+  }, [topics, selectedTopicId]);
   const addNewTag = (newTag: Tag) => {
     setSelectedTags([...selectedTags, newTag]);
   };
@@ -63,13 +75,12 @@ export const AddProjectModal = () => {
           {GTDStrings.SELECT_TOPIC}
         </Label>
         <Select
-          defaultValue={topics && topics[0]}
           name="topics"
           options={topics ? topics.map(topic => ({ label: topic.name, value: topic.id })) : []}
           onChange={(selectedOption) => {
             setSelectedTopic(selectedOption as Option);
           }}
-
+          value={selectedTopic}
         />
       </InputContainer>
       <InputContainer>

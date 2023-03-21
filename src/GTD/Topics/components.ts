@@ -37,6 +37,11 @@ export const ProjectsContainer = styled.div`
 
 `;
 
+export const AddProjectButtonContainer = styled.div`
+  width: 90%;
+  margin: 1rem auto;
+`;
+
 export const ProjectsHeader = styled.div`
   display: grid;
   width: 90%;
