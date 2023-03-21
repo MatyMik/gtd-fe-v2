@@ -1,4 +1,5 @@
 export const commonStrings = {
   CANCEL: "Cancel",
-  CONFIRM: "Confirm"
+  CONFIRM: "Confirm",
+  CLOSE: "Close"
 };

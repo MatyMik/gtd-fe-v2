@@ -49,3 +49,5 @@ export const selectAccessToken = (state: RootState) =>
 
 export const selectRefreshToken = (state: RootState) =>
   state.authentication.refreshToken || localStorage.getItem("refreshToken");
+
+export const selectUserId = (state: RootState) => state.authentication.userId;

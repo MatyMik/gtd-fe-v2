@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { useCreateNextAction, useGetProjects, useGetTags, useGetTopics } from "../../GTD.api";
 import { CreatableTagSelector } from "../../../common/tag-selector";
 import { Option, Tag } from "../../GTD.types";
+import { selectUserId } from "../../../Authentication/Authentication.store";
 
 export const AddNextActionModal = () => {
   const { data: tags, isFetching: areTagsFetching, isUninitialized } = useGetTags({});
@@ -39,6 +40,7 @@ export const AddNextActionModal = () => {
       setSelectedProject({ label: projectToAddNextActionTo.name, value: projectToAddNextActionTo.id });
     }
   }, [topicId, projectId, projects]);
+  const userId = useAppSelector(selectUserId);
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
   const [selectedProject, setSelectedProject] = useState<Option | null>(null);
   const addNewTag = (newTag: Tag) => {
@@ -56,8 +58,9 @@ export const AddNextActionModal = () => {
       name: nextActionName,
       deadline: nextActionDeadlineTimestamp!,
       tags: selectedTags.map(tag => tag.id),
-      projectId: selectedProject!.value,
-      description
+      project: selectedProject!.value,
+      description,
+      userId
     };
     await createNextAction(newNextAction);
   };
