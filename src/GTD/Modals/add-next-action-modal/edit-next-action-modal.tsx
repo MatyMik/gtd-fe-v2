@@ -24,7 +24,7 @@ export const EditNextActionModal = ({
   const [nextActionName, setNextActionName] = useState<string>(originalNextActionTitle);
   const [nextActionDeadlineTimestamp, setNextActionDeadlineTimestamp] = useState<string>(originalDeadline);
 
-  const [selectedTags, setSelectedTags] = useState<Tag[]>(originalTags ? originalTags.map(tagId => tags.find(tag => tag.id === tagId)) : []);
+  const [selectedTags, setSelectedTags] = useState<Tag[]>(originalTags);
   const [description, setDescription] = useState<string>(originalDescription);
   const addNewTag = (newTag: Tag) => {
     setSelectedTags([...selectedTags, newTag]);
@@ -34,7 +34,8 @@ export const EditNextActionModal = ({
   const selectTagHandler = (selectedTagValues: Option[]) => {
     setSelectedTags(selectedTagValues.map(selectedTag => ({ id: selectedTag.value, name: selectedTag.label } as Tag)));
   };
-  const selectedTagOptions = selectedTags.map(tag => ({ label: tag.name, value: tag.id }));
+  console.log(selectedTags);
+  const selectedTagOptions = selectedTags.length ? selectedTags.map(tag => ({ label: tag.name, value: tag.id })) : [];
 
   const updateNextActionHandler = async () => {
     const newNextAction = {
