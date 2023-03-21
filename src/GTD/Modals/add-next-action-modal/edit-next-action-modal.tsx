@@ -22,7 +22,7 @@ export const EditNextActionModal = ({
   const [updateNextAction, { isLoading: isCreatingNextAction }] = useUpdateNextAction("");
 
   const [nextActionName, setNextActionName] = useState<string>(originalNextActionTitle);
-  const [nextActionDeadlineTimestamp, setNextActionDeadlineTimestamp] = useState<string | undefined>(originalDeadline);
+  const [nextActionDeadlineTimestamp, setNextActionDeadlineTimestamp] = useState<string>(originalDeadline);
 
   const [selectedTags, setSelectedTags] = useState<Tag[]>(originalTags ? originalTags.map(tagId => tags.find(tag => tag.id === tagId)) : []);
   const [description, setDescription] = useState<string>(originalDescription);
@@ -76,8 +76,8 @@ export const EditNextActionModal = ({
       <InputContainer>
         <label>Deadline</label>
         <input
-          type="date"
-          value={nextActionDeadlineTimestamp ? (new Date(nextActionDeadlineTimestamp)).toISOString().slice(0, 10) : ""}
+          type="datetime-local"
+          value={nextActionDeadlineTimestamp ? nextActionDeadlineTimestamp : ""}
           onChange={(e) => setNextActionDeadlineTimestamp(e.target.value)} />
       </InputContainer>
       <InputContainer>
