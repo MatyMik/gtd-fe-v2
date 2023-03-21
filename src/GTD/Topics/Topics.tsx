@@ -3,19 +3,33 @@ import { Suspense, useState } from "react";
 import { Spinner } from "../../common/Spinner/Spinner";
 import { AddTopicModal } from "./add-topic-modal";
 import { useBoolean } from "../../common/hooks/use-boolean";
-import { ProjectsContainer, ProjectsHeader, TopicsContainer, TopicsWithMenusContainer } from "./components";
+import {
+  AddProjectButtonContainer,
+  ProjectsContainer,
+  ProjectsHeader,
+  TopicsContainer,
+  TopicsWithMenusContainer
+} from "./components";
 import { Filters } from "./Filters/Filters";
 import { ActionsRightBar } from "./ActionsRightBar/actions-right-bar";
 import { Tabs } from "./Tabs";
 import { Projects } from "./Projects/projects";
-import { useAppSelector } from "../../app.hook";
-import { selectProjectFilterTags } from "../GTD.store";
+import { useAppDispatch, useAppSelector } from "../../app.hook";
+import { selectProjectFilterTags, setIsProjectModalOpen, setSelectedTopicId } from "../GTD.store";
+import { GTDStrings } from "../GTD.strings";
+import { Button } from "../../common/button/button";
 
 export const Topics = () => {
   const { data: topics, isFetching, isError } = useGetTopics({});
   const { value: isAddTopicModalOpen, setFalse: closeAddTopicModal, setTrue: openAddTopicModal } = useBoolean(false);
   const [selectedTopic, setSelectedTopic] = useState<number>(topics?.[0]?.id || 0);
   const projectTagFilters = useAppSelector(selectProjectFilterTags);
+  const dispatch = useAppDispatch();
+
+  const openAddProjectModal = () => {
+    dispatch(setIsProjectModalOpen(true));
+    dispatch(setSelectedTopicId(selectedTopic));
+  };
   return <TopicsWithMenusContainer>
     <Filters />
     <Suspense fallback={<Spinner />}>
@@ -28,6 +42,9 @@ export const Topics = () => {
           isFetching={isFetching} />
 
         <ProjectsContainer>
+          <AddProjectButtonContainer>
+            <Button label={GTDStrings.ADD_PROJECT} onClick={openAddProjectModal} />
+          </AddProjectButtonContainer>
           <ProjectsHeader>
             <div>Project Name</div>
             <div>Project Tags</div>

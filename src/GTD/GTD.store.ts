@@ -44,6 +44,9 @@ export const gtdSlice = createSlice({
     },
     setActivateProjectFilter: (state, action: PayloadAction<ActiveTypes>) => {
       state.activeProjectFilter = action.payload;
+    },
+    setSelectedTopicId: (state, action: PayloadAction<number>) => {
+      state.selectedTopicId = action.payload;
     }
   }
 });
@@ -53,7 +56,8 @@ export const {
   setIsNextActionModalOpen,
   setSelectedProjectData,
   setSelectedProjectFilterTags,
-  setActivateProjectFilter
+  setActivateProjectFilter,
+  setSelectedTopicId
 } =
   gtdSlice.actions;
 
@@ -72,3 +76,5 @@ export const selectSelectedProjectData = (state: RootState) => ({
 export const selectProjectFilterTags = (state: RootState) => state.gtd.selectedProjectFilterTags;
 
 export const selectActiveProjectFilter = (state: RootState) => state.gtd.activeProjectFilter;
+
+export const selectSelectedTopicId = (state: RootState) => state.gtd.selectedTopicId;
