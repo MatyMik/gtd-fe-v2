@@ -23,7 +23,7 @@ export const AddNextActionModal = () => {
   };
 
   const [nextActionName, setNextActionName] = useState<string>("");
-  const [nextActionDeadlineTimestamp, setNextActionDeadlineTimestamp] = useState<number | undefined>(undefined);
+  const [nextActionDeadlineTimestamp, setNextActionDeadlineTimestamp] = useState<string>("");
 
   const [selectedTopic, setSelectedTopic] = useState<Option | null>(null);
   const { data: topics, isFetching: areTopicsFetching } = useGetTopics({});
@@ -132,9 +132,9 @@ export const AddNextActionModal = () => {
       <InputContainer>
         <label>Deadline</label>
         <input
-          type="date"
-          value={nextActionDeadlineTimestamp ? (new Date(nextActionDeadlineTimestamp)).toISOString().slice(0, 10) : ""}
-          onChange={(e) => setNextActionDeadlineTimestamp(e.target.valueAsNumber)} />
+          type="datetime-local"
+          value={nextActionDeadlineTimestamp ? nextActionDeadlineTimestamp : ""}
+          onChange={(e) => setNextActionDeadlineTimestamp(e.target.value)} />
       </InputContainer>
       <InputContainer>
         <Label>
