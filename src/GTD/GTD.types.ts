@@ -31,7 +31,7 @@ export type Project = {
 export type NextActionType = {
   id: number;
   name: string;
-  deadline: number;
+  deadline: string;
   tags: number[];
   done: boolean;
   description: string;

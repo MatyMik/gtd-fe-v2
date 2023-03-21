@@ -18,7 +18,7 @@ export const NextAction = ({ nextAction }: NextActionProps) => {
   };
   return <NextActionContainer>
     <TextContainer>{nextAction.name}</TextContainer>
-    <TextContainer>{nextAction.tags || "tags"}</TextContainer>
+    <TextContainer>{nextAction?.tags.map(tag => tag.name)}</TextContainer>
     <TextContainer>{convertDateString(nextAction.deadline) || "-"}</TextContainer>
     <ActionsContainer>
       <Button label="" type={ButtonTypes.STYLELESS} key={"complete"}
@@ -37,6 +37,7 @@ export const NextAction = ({ nextAction }: NextActionProps) => {
       originalNextActionTitle={nextAction.name}
       originalTags={nextAction.tags}
       originalDescription={nextAction.description}
+      originalNextActionId={nextAction.id}
       closeModal={() => setIsNextActionEditModalOpen(false)}
     /> : null}
     {isNextActionCompleteModalOpen ? <CompleteNextActionModal

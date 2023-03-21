@@ -15,13 +15,14 @@ export const EditNextActionModal = ({
                                       originalTags,
                                       originalDeadline,
                                       originalDescription,
+                                      originalNextActionId,
                                       closeModal
                                     }: EditNextActionModalProps) => {
   const { data: tags, isFetching: areTagsFetching, isUninitialized } = useGetTags({});
-  const [updateNextAction, { isLoading: isCreatingNextAction }] = useUpdateNextAction({});
+  const [updateNextAction, { isLoading: isCreatingNextAction }] = useUpdateNextAction("");
 
   const [nextActionName, setNextActionName] = useState<string>(originalNextActionTitle);
-  const [nextActionDeadlineTimestamp, setNextActionDeadlineTimestamp] = useState<number | undefined>(originalDeadline);
+  const [nextActionDeadlineTimestamp, setNextActionDeadlineTimestamp] = useState<string | undefined>(originalDeadline);
 
   const [selectedTags, setSelectedTags] = useState<Tag[]>(originalTags ? originalTags.map(tagId => tags.find(tag => tag.id === tagId)) : []);
   const [description, setDescription] = useState<string>(originalDescription);
@@ -40,7 +41,8 @@ export const EditNextActionModal = ({
       name: nextActionName,
       deadline: nextActionDeadlineTimestamp!,
       tags: selectedTags.map(tag => tag.id),
-      description
+      description,
+      id: originalNextActionId
     };
     await updateNextAction(newNextAction);
     closeModal();
@@ -76,7 +78,7 @@ export const EditNextActionModal = ({
         <input
           type="date"
           value={nextActionDeadlineTimestamp ? (new Date(nextActionDeadlineTimestamp)).toISOString().slice(0, 10) : ""}
-          onChange={(e) => setNextActionDeadlineTimestamp(e.target.valueAsNumber)} />
+          onChange={(e) => setNextActionDeadlineTimestamp(e.target.value)} />
       </InputContainer>
       <InputContainer>
         <Label>
@@ -100,8 +102,9 @@ export const EditNextActionModal = ({
 type EditNextActionModalProps = {
   originalNextActionTitle: string;
   originalTags: number[];
-  originalDeadline: number;
+  originalDeadline: string;
   originalDescription: string;
+  originalNextActionId: number;
 
   closeModal: () => void;
 }
