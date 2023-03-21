@@ -7,10 +7,12 @@ import { EditNextActionModal } from "../../Modals/add-next-action-modal/edit-nex
 import { useState } from "react";
 import { CompleteNextActionModal } from "../../Modals/complete-next-action-modal/complete-next-action-modal";
 import { useUpdateNextAction } from "../../GTD.api";
+import { NextActionDetails } from "../../Modals/next-action-details/next-action-details";
 
 export const NextAction = ({ nextAction }: NextActionProps) => {
   const [isNextActionEditModalOpen, setIsNextActionEditModalOpen] = useState(false);
   const [isNextActionCompleteModalOpen, setIsNextActionCompleteModalOpen] = useState(false);
+  const [isNextActionDetailsModalOpen, setIsNextActionDetailsModalOpen] = useState(false);
   const [updateNextAction] = useUpdateNextAction();
   const toggleCompleteNextActionHandler = async () => {
     const updatedNextAction = { ...nextAction, done: !nextAction.done };
@@ -26,6 +28,10 @@ export const NextAction = ({ nextAction }: NextActionProps) => {
         <Complete />
       </Button>
       <Button label="" type={ButtonTypes.STYLELESS} key={"active"} onClick={() => setIsNextActionEditModalOpen(true)}>
+        <Edit />
+      </Button>
+      <Button label="" type={ButtonTypes.STYLELESS} key={"active"}
+              onClick={() => setIsNextActionDetailsModalOpen(true)}>
         <Edit />
       </Button>
       <Button label="" type={ButtonTypes.STYLELESS} key={"active"} onClick={console.log}>
@@ -45,6 +51,13 @@ export const NextAction = ({ nextAction }: NextActionProps) => {
       nextActionTitle={nextAction.name}
       completeHandler={toggleCompleteNextActionHandler}
       isNextActionComplete={nextAction.done}
+    /> : null}
+    {isNextActionDetailsModalOpen ? <NextActionDetails
+      nextAction={nextAction}
+      closeHandler={() => {
+        setIsNextActionDetailsModalOpen(false);
+      }}
+      editHandler={() => setIsNextActionEditModalOpen(true)}
     /> : null}
   </NextActionContainer>;
 };
