@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import { ReactComponent as AddSVG } from "../../../images/add-icon.svg";
 
-export const NextActionContainer = styled.div`
+export const NextActionContainer = styled.button`
+  font-family: inherit;
+  background-color: transparent;
+  text-align: left;
+  font-size: 14px;
   width: 85%;
   margin-left: 10%;
   border: 1px solid grey;
