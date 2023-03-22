@@ -47,7 +47,6 @@ export const Topics = () => {
           </AddProjectButtonContainer>
           <ProjectsHeader>
             <div>Project Name</div>
-            <div>Project Tags</div>
             <div>Project Deadline</div>
           </ProjectsHeader>
           <Projects

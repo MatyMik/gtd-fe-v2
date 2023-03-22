@@ -1,4 +1,4 @@
-import { NextActionContainer, TextContainer } from "./components";
+import { Details, NextActionContainer, TextContainer } from "./components";
 import { NextActionType } from "../../GTD.types";
 import { Button, ButtonTypes } from "../../../common/button/button";
 import { ActionsContainer, Complete, Delete, Edit } from "../Projects/components";
@@ -27,14 +27,14 @@ export const NextAction = ({ nextAction }: NextActionProps) => {
               onClick={() => setIsNextActionCompleteModalOpen(true)}>
         <Complete />
       </Button>
-      <Button label="" type={ButtonTypes.STYLELESS} key={"active"} onClick={() => setIsNextActionEditModalOpen(true)}>
+      <Button label="" type={ButtonTypes.STYLELESS} key={"edit"} onClick={() => setIsNextActionEditModalOpen(true)}>
         <Edit />
       </Button>
-      <Button label="" type={ButtonTypes.STYLELESS} key={"active"}
+      <Button label="" type={ButtonTypes.STYLELESS} key={"details"}
               onClick={() => setIsNextActionDetailsModalOpen(true)}>
-        <Edit />
+        <Details />
       </Button>
-      <Button label="" type={ButtonTypes.STYLELESS} key={"active"} onClick={console.log}>
+      <Button label="" type={ButtonTypes.STYLELESS} key={"delete"} onClick={console.log}>
         <Delete />
       </Button>
     </ActionsContainer>

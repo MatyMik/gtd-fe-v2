@@ -78,7 +78,6 @@ export const SingleProject = ({ project }: SingleProjectProps) => {
     <ProjectAndNextActionsContainer>
       <SingleProjectContainer onClick={() => setAreNextActionsVisible(!areNextActionsVisible)}>
         <TextContainer>{project.name}</TextContainer>
-        <TextContainer>{project.tags || "tags"}</TextContainer>
         <TextContainer>{project.deadline || "-"}</TextContainer>
         <ActionsContainer>
           <ActionButtonWithTooltip
