@@ -1,6 +1,5 @@
 import { Modal } from "../../../common/Modal";
 import { useAppDispatch } from "../../../app.hook";
-import { setIsProjectModalOpen } from "../../GTD.store";
 import { ButtonsContainer, InputContainer, Label, Title } from "./componenets";
 import { Button, ButtonTypes } from "../../../common/button/button";
 import { commonStrings } from "../../../common/common-strings";
@@ -20,9 +19,6 @@ export const EditProjectModal = ({
   const { data: tags, isFetching: areTagsFetching, isUninitialized } = useGetTags({});
   const [updateProject, { isLoading: isCreatingProject }] = useUpdateProject({});
   const dispatch = useAppDispatch();
-  const closeModal = () => {
-    dispatch(setIsProjectModalOpen(false));
-  };
 
   const [projectName, setProjectName] = useState<string>(originalProjectName);
   const [projectDeadlineTimestamp, setProjectDeadlineTimestamp] = useState<number | null>(originalProjectDeadline);
@@ -47,8 +43,8 @@ export const EditProjectModal = ({
     closeHandler();
   };
   return (
-    <Modal closeHandler={closeModal}>
-      <Title>Modal</Title>
+    <Modal closeHandler={closeHandler}>
+      <Title>{GTDStrings.EDIT_PROJECT}</Title>
       <InputContainer>
         <LabelledInput
           id={GTDStrings.PROJECT_NAME}

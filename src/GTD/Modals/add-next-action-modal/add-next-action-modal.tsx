@@ -78,7 +78,7 @@ export const AddNextActionModal = () => {
   };
   return (
     <Modal closeHandler={closeModal} modalType={ModalTypes.LARGE}>
-      <Title>Modal</Title>
+      <Title>{GTDStrings.ADD_NEXT_ACTION}</Title>
       <InputContainer>
         <LabelledInput
           id={GTDStrings.NEXT_ACTION_NAME}

@@ -7,7 +7,7 @@ export const GTDStrings = {
   ADD_NEXT_ACTIONS: "Add Next Actions",
   ADD_NEXT_ACTION: "Add Next Action",
   ADD_NEXT_ACTION_BTN_TEXT: "Add",
-  ADD_NEXT_ACTION_AND_CONTINUE_BTN_TEXT: "Add and Create Another",
+  ADD_NEXT_ACTION_AND_CONTINUE_BTN_TEXT: "Add and Create More",
   PROJECT_NAME: "Project Name",
   SELECT_TAGS: "Tags",
   SELECT_TOPIC: "Select Topic",
@@ -23,5 +23,6 @@ export const GTDStrings = {
   UPDATE_NEXT_ACTION: "Update Next Action",
   COMPLETE_TEXT: (nextActionName: string) => `Are you sure you want to mark ${nextActionName} as complete?`,
   UNDO_COMPLETE_TEXT: (nextActionName: string) => `Are you sure you want to mark ${nextActionName} as not complete?`,
-  EDIT: "Edit"
+  EDIT: "Edit",
+  EDIT_PROJECT: "Edit Project"
 };
