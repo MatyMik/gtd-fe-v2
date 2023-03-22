@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ReactComponent as AddSVG } from "../../../images/add-icon.svg";
+import { ReactComponent as DetailsSVG } from "../../../images/details.svg";
 
 export const NextActionContainer = styled.button`
   font-family: inherit;
@@ -18,6 +19,11 @@ export const NextActionContainer = styled.button`
 export const TextContainer = styled.div``;
 
 export const Add = styled(AddSVG)`
+  width: 1.5rem;
+  height: 1.5rem;
+`;
+
+export const Details = styled(DetailsSVG)`
   width: 1.5rem;
   height: 1.5rem;
 `;

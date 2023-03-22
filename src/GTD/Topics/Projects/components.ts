@@ -23,7 +23,7 @@ export const ProjectsContainer = styled.section``;
 export const SingleProjectContainer = styled.button`
   background: ${({ theme }) => theme.colors.white};
   display: grid;
-  grid-template-columns: 2fr 2fr 2fr 1fr;
+  grid-template-columns: 4fr 2fr 1fr;
   border: 1px solid black;
   width: 90%;
   margin: auto;
