@@ -5,8 +5,10 @@ import {
   Complete,
   Delete,
   Edit,
+  Hide,
   Menu,
   ProjectAndNextActionsContainer,
+  Show,
   SingleProjectContainer,
   SubMenuContainer,
   SubMenuItemsContainer,
@@ -31,6 +33,7 @@ export const SingleProject = ({ project }: SingleProjectProps) => {
   const [isActivateModalOpen, setIsActivateModalOpen] = useState(false);
   const [isCompleteModalOpen, setIsCompleteModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [areCompleteNextActionsVisible, setAreCompleteNextActionsVisible] = useState(false);
   const dispatch = useAppDispatch();
   const { data: nextActions, isFetching, isError } = useGetNextActions(project.id!, { skip: !areNextActionsVisible });
   const addNewNextActionHandler = () => {
@@ -67,6 +70,10 @@ export const SingleProject = ({ project }: SingleProjectProps) => {
     e.stopPropagation();
     setIsEditModalOpen(true);
   };
+  const toggleCompleteNextActionsVisible = (e) => {
+    e.stopPropagation();
+    setAreCompleteNextActionsVisible(!areCompleteNextActionsVisible);
+  };
   return (
     <ProjectAndNextActionsContainer>
       <SingleProjectContainer onClick={() => setAreNextActionsVisible(!areNextActionsVisible)}>
@@ -99,15 +106,39 @@ export const SingleProject = ({ project }: SingleProjectProps) => {
             key={"edit"}
           />
           <SubMenuContainer>
-            <Button label="" type={ButtonTypes.STYLELESS} key={"active3"} onClick={toggleMenu}>
-              <Menu />
-            </Button>
+            <ActionButtonWithTooltip
+              label="Menu"
+              onClick={toggleMenu}
+              active={false}
+              tooltipContent={"Open Submenu"}
+              Icon={Menu}
+              key={"submenu"}
+            />
             {isMenuOpen ? <SubMenuItemsContainer>
-              <Button label="" type={ButtonTypes.STYLELESS} key={"active1"} onClick={console.log}><Archive /></Button>
-
-              <Button label="" type={ButtonTypes.STYLELESS} key={"active3"} onClick={console.log}>
-                <Delete />
-              </Button>
+              <ActionButtonWithTooltip
+                label="Archive"
+                onClick={toggleMenu}
+                active={false}
+                tooltipContent={"Archive"}
+                Icon={Archive}
+                key={"archive"}
+              />
+              <ActionButtonWithTooltip
+                label="Delete"
+                onClick={toggleMenu}
+                active={false}
+                tooltipContent={"Delete"}
+                Icon={Delete}
+                key={"delete"}
+              />
+              <ActionButtonWithTooltip
+                label={areCompleteNextActionsVisible ? "Hide" : "Show"}
+                onClick={toggleCompleteNextActionsVisible}
+                active={false}
+                tooltipContent={`${areCompleteNextActionsVisible ? "Hide" : "Show"} complete next actions`}
+                Icon={areCompleteNextActionsVisible ? Hide : Show}
+                key={"show-hide"}
+              />
             </SubMenuItemsContainer> : null}
           </SubMenuContainer>
         </ActionsContainer>
@@ -118,6 +149,7 @@ export const SingleProject = ({ project }: SingleProjectProps) => {
           {!isFetching ? <NextActions
             nextActions={nextActions}
             addNewNextActionHandler={addNewNextActionHandler}
+            areCompleteNextActionsVisible={areCompleteNextActionsVisible}
           /> : null}
         </Suspense> : null}
       {isActivateModalOpen ? <ActivateProjectModal

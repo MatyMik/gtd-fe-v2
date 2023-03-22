@@ -5,6 +5,8 @@ import { ReactComponent as CompleteSVG } from "../../../images/complete.svg";
 import { ReactComponent as ArchiveSVG } from "../../../images/archive.svg";
 import { ReactComponent as EditSVG } from "../../../images/edit.svg";
 import { ReactComponent as MenuSVG } from "../../../images/three-dots-vertical.svg";
+import { ReactComponent as ShowSVG } from "../../../images/show.svg";
+import { ReactComponent as HideSVG } from "../../../images/hide.svg";
 
 export const ProjectsContainer = styled.section``;
 
@@ -32,6 +34,14 @@ export const TextContainer = styled.div`
 `;
 
 export const Delete = styled(DeleteSVG)`
+  width: 1.5rem;
+  height: 1.5rem;
+`;
+export const Show = styled(ShowSVG)`
+  width: 1.5rem;
+  height: 1.5rem;
+`;
+export const Hide = styled(HideSVG)`
   width: 1.5rem;
   height: 1.5rem;
 `;
