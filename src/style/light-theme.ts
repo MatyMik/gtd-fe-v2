@@ -9,24 +9,20 @@ export const lightTheme = {
   modalTypes: {
     [ModalTypes.NORMAL]: {
       width: "30vw",
-      height: "30vh",
       top: "35vh",
       left: "35vw"
     },
     [ModalTypes.MEDIUM]: {
       width: "30vw",
-      height: "40vh",
       top: "35vh",
       left: "35vw"
     }, [ModalTypes.LARGE]: {
       width: "30vw",
-      height: "60vh",
       top: "20vh",
       left: "35vw"
     },
     [ModalTypes.SMALL]: {
       width: "30vw",
-      height: "20vh",
       top: "40vh",
       left: "35vw"
     }

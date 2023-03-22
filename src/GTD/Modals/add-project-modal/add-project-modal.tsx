@@ -59,7 +59,7 @@ export const AddProjectModal = () => {
   };
   return (
     <Modal closeHandler={closeModal}>
-      <Title>Modal</Title>
+      <Title>{GTDStrings.ADD_PROJECT}</Title>
       <InputContainer>
         <LabelledInput
           id={GTDStrings.PROJECT_NAME}
@@ -105,12 +105,6 @@ export const AddProjectModal = () => {
         <Button label={commonStrings.CANCEL} onClick={closeModal} type={ButtonTypes.CANCEL} />
         <Button
           label={GTDStrings.ADD_PROJECT}
-          onClick={addProject}
-          type={ButtonTypes.PRIMARY}
-          disabled={projectName.length === 0 || selectedTopic === null}
-        />
-        <Button
-          label={GTDStrings.ADD_NEXT_ACTIONS}
           onClick={addProject}
           type={ButtonTypes.PRIMARY}
           disabled={projectName.length === 0 || selectedTopic === null}

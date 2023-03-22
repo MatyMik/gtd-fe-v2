@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ButtonsContainer = styled.div`
-  width: 60%;
+  width: 70%;
   margin: 3rem auto;
   display: flex;
   justify-content: space-between;
