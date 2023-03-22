@@ -8,6 +8,16 @@ import { ReactComponent as MenuSVG } from "../../../images/three-dots-vertical.s
 import { ReactComponent as ShowSVG } from "../../../images/show.svg";
 import { ReactComponent as HideSVG } from "../../../images/hide.svg";
 
+
+const SVGProps = `
+  width: 1.5rem;
+  height: 1.5rem;
+  transition-duration: 0.2s;
+
+  &:hover {
+    transform: scale(1.3);
+  }
+`;
 export const ProjectsContainer = styled.section``;
 
 export const SingleProjectContainer = styled.button`
@@ -17,7 +27,7 @@ export const SingleProjectContainer = styled.button`
   border: 1px solid black;
   width: 90%;
   margin: auto;
-  height: 2rem;
+  height: 2.5rem;
   align-items: center;
   border-radius: 8px;
 `;
@@ -34,27 +44,23 @@ export const TextContainer = styled.div`
 `;
 
 export const Delete = styled(DeleteSVG)`
-  width: 1.5rem;
-  height: 1.5rem;
+  ${SVGProps}
 `;
 export const Show = styled(ShowSVG)`
-  width: 1.5rem;
-  height: 1.5rem;
+  ${SVGProps}
 `;
 export const Hide = styled(HideSVG)`
-  width: 1.5rem;
-  height: 1.5rem;
+  ${SVGProps}
 `;
 
 export const Active = styled(ActiveSVG)<{ $active: boolean }>`
-  width: 1.5rem;
-  height: 1.5rem;
+  ${SVGProps}
+
   ${({ $active, theme }) => $active ? `fill: ${theme.colors.primary.opacity()};` : ""}
 `;
 
 export const Complete = styled(CompleteSVG)`
-  width: 1.5rem;
-  height: 1.5rem;
+  ${SVGProps}
 `;
 
 export const Menu = styled(MenuSVG)`
@@ -63,13 +69,11 @@ export const Menu = styled(MenuSVG)`
 `;
 
 export const Edit = styled(EditSVG)`
-  width: 1.5rem;
-  height: 1.5rem;
+  ${SVGProps}
 `;
 
 export const Archive = styled(ArchiveSVG)`
-  width: 1.5rem;
-  height: 1.5rem;
+  ${SVGProps}
 `;
 
 export const ActionsContainer = styled.div`
@@ -85,8 +89,11 @@ export const SubMenuItemsContainer = styled.div`
   border: 1px solid black;
   position: absolute;
   top: 0rem;
-  right: -2.5rem;
+  right: -3rem;
   display: grid;
   grid-template-columns: 1fr;
   background-color: ${({ theme }) => theme.colors.white};
+  padding: 0.5rem 0.25rem;
+  gap: 0.5rem;
+  border-radius: 1rem;
 `;
