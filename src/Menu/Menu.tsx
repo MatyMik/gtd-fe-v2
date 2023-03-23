@@ -7,7 +7,7 @@ export const Menu = () => {
     <MenuContainer>
       <MenuItem label={MenuStrings.HOME} to="/" Icon={Home} />
       <MenuItem label={MenuStrings.TOPICS} to="/topic" Icon={Topic} />
-      <MenuItem label={MenuStrings.NEXT_ACTIONS} to="/next-action" Icon={NextAction} />
+      <MenuItem label={MenuStrings.NEXT_ACTIONS} to="/next-actions" Icon={NextAction} />
       <MenuItem label={MenuStrings.CALENDAR} to="/calendar" Icon={Calendar} />
     </MenuContainer>
   );
