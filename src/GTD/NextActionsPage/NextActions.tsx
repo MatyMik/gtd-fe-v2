@@ -7,7 +7,7 @@ import { DayPicker } from "../../common/day-picker/DayPicker";
 
 export const NextActions = () => {
   const { data: nextActions, isFetching, isError } = useGetNextActions("");
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(new Date((new Date()).setHours(0, 0, 0, 0)));
   const onDateChange = (newDate: Date) => {
     setDate(newDate);
   };
@@ -15,7 +15,15 @@ export const NextActions = () => {
     <NextActionsHeader>{GTDStrings.NEXT_ACTIONS}</NextActionsHeader>
     <DayPicker date={date} onDateChange={onDateChange} />
     <Suspense fallback={<Spinner />}>
-      {isFetching ? nextActions?.map((nextAction) => <div key={nextAction.id}>{nextAction.title}</div>) : null}
+      {!isFetching ? nextActions?.map((nextAction) => {
+        if (!((new Date(nextAction.deadline)).setHours(0, 0, 0, 0) == date.getTime())) {
+          return null;
+        }
+        return (<div
+            key={nextAction.id}>{nextAction.name}</div>
+        );
+      }) : null
+      }
     </Suspense>
   </NextActionsMain>;
 
