@@ -24,5 +24,6 @@ export const GTDStrings = {
   COMPLETE_TEXT: (nextActionName: string) => `Are you sure you want to mark ${nextActionName} as complete?`,
   UNDO_COMPLETE_TEXT: (nextActionName: string) => `Are you sure you want to mark ${nextActionName} as not complete?`,
   EDIT: "Edit",
-  EDIT_PROJECT: "Edit Project"
+  EDIT_PROJECT: "Edit Project",
+  NEXT_ACTIONS: "Next Actions"
 };
