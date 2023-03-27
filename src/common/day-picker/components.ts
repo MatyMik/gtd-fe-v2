@@ -9,6 +9,7 @@ export const DayPickerContainer = styled.div`
   border: 1px solid grey;
   border-radius: 1rem;
   overflow: hidden;
+  background-color: ${props => props.theme.colors.white};
 `;
 
 export const DayPickerButton = styled.button`
